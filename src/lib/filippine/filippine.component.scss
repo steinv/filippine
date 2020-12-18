@@ -1,0 +1,19 @@
+
+input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background: transparent;
+    outline: none;
+    text-transform: uppercase;
+}
+
+app-grid-tile {
+    outline: 1px solid black;
+}
+
+app-grid-list.ng-invalid .input {
+    outline-color: red;
+    z-index: 1;
+}

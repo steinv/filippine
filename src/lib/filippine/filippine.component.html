@@ -1,0 +1,16 @@
+
+<form [formGroup]="filippineForm">
+    <grid-list 
+        *ngFor="let row of tiles; let i = index" 
+        [cols]="columns" 
+        gutterSize="0"
+        [formGroupName]="'Q'+i"
+    >
+        <grid-tile *ngFor="let tile of row"
+            [colspan]="tile.colspan"
+            [style.background]="tile.color"
+            [ngClass]="{'input': tile.question}">
+            <input *ngIf="tile.question === true" AutoTab [id]="tile.index" type="text" maxlength="1" [formControlName]="tile.name" />
+        </grid-tile>
+    </grid-list>
+</form>
