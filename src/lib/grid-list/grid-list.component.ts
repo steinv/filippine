@@ -1,5 +1,5 @@
 import { GridTileComponent } from './../grid-tile/grid-tile.component';
-import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, Input, QueryList } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
 
 @Component({
   selector: 'grid-list',
