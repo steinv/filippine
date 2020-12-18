@@ -5,11 +5,11 @@ This library was generated with [Angular CLI](https://github.com/angular/angular
 ## Usage
 
 1. Install from npm
-`npm install filippine`
+`npm install @steinv/filippine`
 
 2. Import the module in your **app.module.ts**
 ```ts
-import { FilippineModule } from 'filippine/filippine.module';
+import { FilippineModule } from '@steinv/filippine';
 
 @NgModule({
   declarations: [

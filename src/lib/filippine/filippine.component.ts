@@ -1,13 +1,14 @@
 import { Configuration, Question } from '../configuration';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, AfterContentChecked } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'filippine',
   templateUrl: './filippine.component.html',
-  styleUrls: ['./filippine.component.scss']
+  styleUrls: ['./filippine.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilippineComponent implements OnInit {
+export class FilippineComponent implements OnInit, AfterContentChecked {
 
   @Input()
   public configuration!: Configuration;
@@ -16,7 +17,9 @@ export class FilippineComponent implements OnInit {
   public columns: number = 1;
   public tiles: Array<Array<any>> = [];
 
-  public constructor() { }
+  public constructor(
+    private readonly _changeDetectorRef: ChangeDetectorRef,
+  ) { }
 
   public ngOnInit(): void {
     /**
@@ -76,4 +79,7 @@ export class FilippineComponent implements OnInit {
     }
   }
   
+  ngAfterContentChecked(): void {
+    this._changeDetectorRef.detectChanges();
+  }
 }

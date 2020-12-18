@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Input, OnInit, ContentChild, ElementRef, AfterContentInit, AfterContentChecked } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, ElementRef, AfterContentInit } from '@angular/core';
 
 @Component({
   selector: 'grid-tile',
@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, HostBinding, Inp
   styleUrls: ['./grid-tile.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GridTileComponent  implements AfterContentInit, AfterContentChecked {
+export class GridTileComponent  implements AfterContentInit {
 
   @Input() public colspan: number = 1;
   @HostBinding('style.width') private _width: string = '100%';
@@ -14,7 +14,6 @@ export class GridTileComponent  implements AfterContentInit, AfterContentChecked
 
   constructor (
     private readonly _elementRef: ElementRef,
-    private readonly _changeDetectorRef: ChangeDetectorRef
   ) { }
 
   set width(width: string) {
@@ -28,9 +27,4 @@ export class GridTileComponent  implements AfterContentInit, AfterContentChecked
   ngAfterContentInit() {
     const element = this._elementRef.nativeElement as HTMLElement;
   }
-
-  ngAfterContentChecked(): void {
-    this._changeDetectorRef.detectChanges();
-  }
-
 }

@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { GridTileComponent } from './../grid-tile/grid-tile.component';
 import { AfterContentInit, ChangeDetectionStrategy, Component, ContentChild, ContentChildren, Input, QueryList } from '@angular/core';
 
