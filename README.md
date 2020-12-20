@@ -1,6 +1,6 @@
 # Filippine
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+Filippine puzzle with Angular
 
 ## Usage
 
@@ -61,5 +61,7 @@ After building your library with `ng build filippine`, go to the dist folder `cd
 Run `ng test filippine` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Further help
+
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
