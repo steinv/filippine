@@ -1,5 +1,5 @@
 {
-  "name": "filippine",
+  "name": "@steinv/filippine",
   "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "^11.0.5",
@@ -7,5 +7,27 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  }
+  },
+  "description": "Filippine puzzle with Angular",
+  "main": "karma.conf.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "ng test filippine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steinv/filippine.git"
+  },
+  "keywords": [
+    "filippine",
+    "puzzle",
+    "angular",
+    "angular11"
+  ],
+  "author": "stein vanmassenhove",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steinv/filippine/issues"
+  },
+  "homepage": "https://github.com/steinv/filippine#readme"
 }
