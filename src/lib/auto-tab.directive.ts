@@ -17,10 +17,9 @@ export class AutoTabDirective {
     const position = input.id.split(',');
     let element;
 
-    if (length === 1 && input.id) {
+    if ((length === 1 || event.key === 'ArrowRight') && input.id) {
       element = position[0] + ',' + (+position[1] + 1);
     }
-
     if((event.key === 'Backspace' || event.key === 'ArrowLeft') && input.id) {
       element = position[0] + ',' + (position[1] - 1);
     }
