@@ -21,7 +21,7 @@ export class AutoTabDirective {
       element = position[0] + ',' + (+position[1] + 1);
     }
     if((event.key === 'Backspace' || event.key === 'ArrowLeft') && input.id) {
-      element = position[0] + ',' + (position[1] - 1);
+      element = position[0] + ',' + (+position[1] - 1);
     }
     if((event.key === 'ArrowUp') && input.id) {
       element = (+position[0] - 1) + ',' + position[1];
