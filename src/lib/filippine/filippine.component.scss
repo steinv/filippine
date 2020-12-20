@@ -1,16 +1,17 @@
-
-input {
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    border: none;
-    background: transparent;
-    outline: none;
-    text-transform: uppercase;
-}
-
 grid-tile {
     outline: 1px solid black;
+
+    input {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        border: none;
+        background: transparent;
+        outline: none;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 grid-list.ng-invalid .input {
