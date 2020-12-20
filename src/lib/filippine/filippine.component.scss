@@ -1,16 +1,18 @@
 grid-tile {
     outline: 1px solid black;
+    position: relative;
+    display: inline-block; 
 
     input {
         width: 100%;
-        height: 100%;
+        height: 0;
+        padding: 50% 0 50% 0;
+        margin: 0;
         text-align: center;
         border: none;
         background: transparent;
         outline: none;
         text-transform: uppercase;
-        padding: 0;
-        margin: 0;
     }
 }
 

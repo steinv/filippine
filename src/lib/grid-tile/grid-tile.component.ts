@@ -10,7 +10,6 @@ export class GridTileComponent  implements AfterContentInit {
 
   @Input() public colspan: number = 1;
   @HostBinding('style.width') private _width: string = '100%';
-  @HostBinding('style.height') private _height: string = '50px';
 
   constructor (
     private readonly _elementRef: ElementRef,
@@ -19,11 +18,7 @@ export class GridTileComponent  implements AfterContentInit {
   set width(width: string) {
     this._width = width;
   }
-
-  set height(height: string) {
-    this.height = height;
-  }
-
+  
   ngAfterContentInit() {
     const element = this._elementRef.nativeElement as HTMLElement;
   }
