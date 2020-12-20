@@ -8,3 +8,8 @@ export interface Question {
     answerLength: number;
     answerPosition: number;
 }
+
+export interface Answer {
+    question: Question,
+    answer: string,
+}

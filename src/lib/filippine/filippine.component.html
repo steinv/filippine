@@ -4,7 +4,7 @@
         *ngFor="let row of tiles; let i = index" 
         [cols]="columns" 
         gutterSize="0"
-        [formGroupName]="'Q'+i"
+        [formGroupName]="i"
     >
         <grid-tile *ngFor="let tile of row"
             [colspan]="tile.colspan"

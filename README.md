@@ -24,7 +24,14 @@ import { FilippineModule } from '@steinv/filippine';
 export class AppModule { }
 ```
 
-3. Add a configuration for your filippine puzzle in your **component**
+3. Add the filippine directive in your **component template**
+```html
+    <filippine [configuration]="configuration" (answer)="questionAnswered(answer)>
+
+    </filippine>
+```
+
+4. Add a configuration and handle output for your filippine puzzle in your **component**
 ```ts
   public configuration: Configuration = {
     questions: [
@@ -34,13 +41,14 @@ export class AppModule { }
       {question: 'q4?', answer: 'abcdefgh', answerLength: 8, answerPosition: 2},
     ]
   }
-```
 
-4. Add the filippine directive in your **component template**
-```html
-    <filippine [configuration]="configuration">
-
-    </filippine>
+  public questionAnswered(reply: Answer) {
+    /**
+     * do something with the reply:Answer 
+     * reply.question
+     * reply.answer
+     */
+  }
 ```
 
 ## Code scaffolding

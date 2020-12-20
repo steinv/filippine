@@ -1,5 +1,6 @@
+import { Answer } from './../configuration';
 import { Configuration, Question } from '../configuration';
-import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, AfterContentChecked } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
@@ -8,10 +9,13 @@ import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/f
   styleUrls: ['./filippine.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FilippineComponent implements OnInit, AfterContentChecked {
+export class FilippineComponent implements OnInit, AfterViewInit {
 
   @Input()
   public configuration!: Configuration;
+
+  @Output()
+  public answer = new EventEmitter<Answer>();
 
   public filippineForm = new FormGroup({});
   public columns: number = 1;
@@ -44,13 +48,13 @@ export class FilippineComponent implements OnInit, AfterContentChecked {
           this.tiles[i].push({color: 'black', text:'', colspan: blankCellsLeft});
         }
 
-        const formQuestion = new FormGroup({}, this.rightAnswer(m.answer));
+        const formQuestion = new FormGroup({}, this.rightAnswer(m));
         for(let index = 0; index < inputCells; index++) {
           const color = (index === m.answerPosition)? 'yellow': 'white';
           this.tiles[i].push({color: color, text: m.answer[index], colspan: 1, question: true, name: index, index: i.toString()+','+(index+blankCellsLeft).toString()});
           formQuestion.addControl(index.toString(), new FormControl());// m.answer.charAt(index)
         }
-        this.filippineForm.addControl('Q'+i.toString(), formQuestion);
+        this.filippineForm.addControl(i.toString(), formQuestion);
 
         if(blankCellsRight > 0) {
           this.tiles[i].push({color: 'black', text:'_', colspan: blankCellsRight});
@@ -59,27 +63,46 @@ export class FilippineComponent implements OnInit, AfterContentChecked {
     );
   }
 
-  public rightAnswer(answer: string): ValidatorFn {  
+  public rightAnswer(question: Question): ValidatorFn {  
     return (c: AbstractControl): { [key: string]: any } | null => {
-      let question = c as FormGroup;
+      let formGroup = c as FormGroup;
+
       let invalid = false;
-      for (const field in question.controls) { 
-        const control = question.get(field);
+      let reply = '';
+      for (const field in formGroup.controls) { 
+        const control = formGroup.get(field);
         
         // only validate answer when entire group is filled
         if(!control || !control.value) {
           return null;
         }
 
-        if(control.value.toUpperCase() !== answer.charAt(+field).toUpperCase()) {
+        // concat control value upon reply string
+        reply += control.value;
+
+        // validate response
+        if(question.answer && 
+          question.answer.length >= +field &&
+          control.value.toUpperCase() !== question.answer.charAt(+field).toUpperCase()
+        ) {
           invalid = true;
-        }
+        }  
+      }
+
+
+      // emit answer that client entered
+      if(reply) {
+        this.answer.emit({
+          question: question,
+          answer: reply,
+        });
       }
       return invalid ? {invalid: true} : null;
     }
   }
   
-  ngAfterContentChecked(): void {
+  public ngAfterViewInit(): void {
     this._changeDetectorRef.detectChanges();
   }
 }
+
