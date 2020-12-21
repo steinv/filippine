@@ -1,7 +1,8 @@
 grid-tile {
     position: relative;
-    display: inline-block;
-
+    display: flex;
+    outline: 1px solid black;
+    
     input {
         width: 100%;
         height: 0;
