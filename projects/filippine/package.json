@@ -1,0 +1,25 @@
+{
+  "name": "@steinv/filippine",
+  "version": "0.0.4",
+  "description": "Filippine puzzle with Angular",
+  "peerDependencies": {
+    "@angular/common": "~11.0.1",
+    "@angular/core": "~11.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steinv/filippine.git"
+  },
+  "keywords": [
+    "filippine",
+    "puzzle",
+    "angular",
+    "angular11"
+  ],
+  "author": "stein vanmassenhove <stein.vanmassenhove@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steinv/filippine/issues"
+  },
+  "homepage": "https://github.com/steinv/filippine#readme"
+}

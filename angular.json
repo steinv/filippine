@@ -5,36 +5,36 @@
   "projects": {
     "filippine": {
       "projectType": "library",
-      "root": ".",
-      "sourceRoot": "./src",
+      "root": "projects/filippine",
+      "sourceRoot": "projects/filippine/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "./tsconfig.lib.json",
-            "project": "./ng-package.json"
+            "tsConfig": "projects/filippine/tsconfig.lib.json",
+            "project": "projects/filippine/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "./tsconfig.lib.prod.json"
+              "tsConfig": "projects/filippine/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "./src/test.ts",
-            "tsConfig": "./tsconfig.spec.json",
-            "karmaConfig": "./karma.conf.js"
+            "main": "projects/filippine/src/test.ts",
+            "tsConfig": "projects/filippine/tsconfig.spec.json",
+            "karmaConfig": "projects/filippine/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "./tsconfig.lib.json",
-              "./tsconfig.spec.json"
+              "projects/filippine/tsconfig.lib.json",
+              "projects/filippine/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -44,7 +44,7 @@
       }
     }},
   "cli": {
-    "analytics": false
+    "analytics": "97972abf-2c0c-4dc2-9ad9-fb6a6d7bbe29"
   },
   "defaultProject": "filippine"
 }
