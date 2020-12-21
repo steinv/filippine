@@ -1,6 +1,6 @@
 {
   "name": "@steinv/filippine",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Filippine puzzle with Angular",
   "peerDependencies": {
     "@angular/common": "~11.0.1",
