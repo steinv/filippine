@@ -1,7 +1,6 @@
 grid-tile {
-    outline: 1px solid black;
     position: relative;
-    display: inline-block; 
+    display: inline-block;
 
     input {
         width: 100%;
@@ -14,6 +13,17 @@ grid-tile {
         outline: none;
         text-transform: uppercase;
     }
+}
+
+.spacer{
+    background-color: black;
+}
+.input {
+    background-color: white;
+    outline: 1px solid black;
+}
+.highlight {
+    background-color: yellow;
 }
 
 grid-list.ng-invalid .input {

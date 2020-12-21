@@ -50,3 +50,22 @@ export class AppModule { }
      */
   }
 ```
+
+## Style
+
+You can override the used css selectors to define your own custom styling
+```css
+/* grid-tiles used for spacing */
+.spacer {
+  background-color: black; 
+}
+/* grid-tiles used for input */
+.input {
+    background-color: white;
+    outline: 1px solid black;
+}
+/* highlighted input grid-tiles */
+.highlight {
+    background-color: yellow;
+}
+```

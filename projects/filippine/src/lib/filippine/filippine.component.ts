@@ -45,19 +45,24 @@ export class FilippineComponent implements OnInit, AfterViewInit {
 
         this.tiles.push(new Array());
         if(blankCellsLeft > 0) {
-          this.tiles[i].push({color: 'black', text:'', colspan: blankCellsLeft});
+          this.tiles[i].push({colspan: blankCellsLeft, question: false, highlight: false});
         }
 
         const formQuestion = new FormGroup({}, this.rightAnswer(m));
         for(let index = 0; index < inputCells; index++) {
-          const color = (index === m.answerPosition)? 'yellow': 'white';
-          this.tiles[i].push({color: color, text: m.answer[index], colspan: 1, question: true, name: index, index: i.toString()+','+(index+blankCellsLeft).toString()});
+          this.tiles[i].push({
+            highlight: (index === m.answerPosition),                           // highlighted box or not
+            colspan: 1,                                     // colspan for question is always 1
+            question: true,                                 // question or spacer
+            name: index,                                    // formControlName based on index
+            index: i.toString()+','+(index+blankCellsLeft).toString() // coorindates row, column
+          });
           formQuestion.addControl(index.toString(), new FormControl());// m.answer.charAt(index)
         }
         this.filippineForm.addControl(i.toString(), formQuestion);
 
         if(blankCellsRight > 0) {
-          this.tiles[i].push({color: 'black', text:'_', colspan: blankCellsRight});
+          this.tiles[i].push({colspan: blankCellsRight, question: false, highlight: false});
         }
       }
     );
