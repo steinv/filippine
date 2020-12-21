@@ -92,12 +92,10 @@ export class FilippineComponent implements OnInit, AfterViewInit {
 
       // emit answer that client entered
       if(reply) {
-        const r: Answer = {
+        this.answer.emit({
           question: question,
           answer: reply,
-        };
-        console.log(r);
-        this.answer.emit(r);
+        });
       }
       return invalid ? {invalid: true} : null;
     }

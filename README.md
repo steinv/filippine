@@ -26,7 +26,7 @@ export class AppModule { }
 
 3. Add the filippine directive in your **component template**
 ```html
-    <filippine [configuration]="configuration" (answer)="questionAnswered(answer)>
+    <filippine [configuration]="configuration" (answer)="questionAnswered($event)>
 
     </filippine>
 ```
