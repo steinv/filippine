@@ -50,7 +50,7 @@ export class AppModule { }
      */
   }
 
-    public puzzleCompleted(result: boolean) {
+  public puzzleCompleted(result: boolean) {
     /**
      * do something with the result: boolean 
      */
