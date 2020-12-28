@@ -17,6 +17,10 @@ export class FilippineComponent implements OnInit, AfterViewInit {
   @Output()
   public answer = new EventEmitter<Answer>();
 
+  /**
+   * Emits when the form has been completed
+   * returns false when answered wrongly, true when correctly answered
+   */
   @Output()
   public completed = new EventEmitter<boolean>();
 
@@ -51,7 +55,7 @@ export class FilippineComponent implements OnInit, AfterViewInit {
           this.tiles[i].push({colspan: blankCellsLeft, question: false, highlight: false});
         }
 
-        const formQuestion = new FormGroup({}, [Validators.required, this.rightAnswer(m)]);
+        const formQuestion = new FormGroup({}, this.rightAnswer(m));
         for(let index = 0; index < inputCells; index++) {
           this.tiles[i].push({
             highlight: (index === m.answerPosition),                           // highlighted box or not
@@ -60,7 +64,7 @@ export class FilippineComponent implements OnInit, AfterViewInit {
             name: index,                                    // formControlName based on index
             index: i.toString()+','+(index+blankCellsLeft).toString() // coorindates row, column
           });
-          formQuestion.addControl(index.toString(), new FormControl());// m.answer.charAt(index)
+          formQuestion.addControl(index.toString(), new FormControl(''));// m.answer.charAt(index)
         }
         this.filippineForm.addControl(i.toString(), formQuestion);
 
@@ -68,7 +72,19 @@ export class FilippineComponent implements OnInit, AfterViewInit {
           this.tiles[i].push({colspan: blankCellsRight, question: false, highlight: false});
         }
 
-        this.filippineForm.valueChanges.subscribe(() => this.completed.emit(this.filippineForm.valid));
+        this.filippineForm.valueChanges.subscribe(() => {
+          for(const group in this.filippineForm.controls) { 
+            const controlGroup = this.filippineForm.get(group) as FormGroup;
+            for (const field in controlGroup.controls) {
+              const inputField = controlGroup.get(field);
+              if(!inputField || !inputField.value) {
+                return;
+              }
+            }
+          }
+
+          this.completed.emit(this.filippineForm.valid);
+        });
       }
     );
   }
