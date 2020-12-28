@@ -26,7 +26,7 @@ export class AppModule { }
 
 3. Add the filippine directive in your **component template**
 ```html
-    <filippine [configuration]="configuration" (answer)="questionAnswered($event)>
+    <filippine [configuration]="configuration" (answer)="questionAnswered($event)" (completed)="puzzleCompleted($event)">
 
     </filippine>
 ```
@@ -44,10 +44,21 @@ export class AppModule { }
 
   public questionAnswered(reply: Answer) {
     /**
-     * do something with the reply:Answer 
+     * do something with the reply: Answer 
      * reply.question
      * reply.answer
      */
+  }
+
+    public puzzleCompleted(result: boolean) {
+    /**
+     * do something with the result: boolean 
+     */
+     if (result) {
+      console.log('well done!');
+     } else {
+      console.log('Uh-Oh looks like you made a mistake');
+     }
   }
 ```
 
