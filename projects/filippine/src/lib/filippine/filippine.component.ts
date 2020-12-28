@@ -1,7 +1,7 @@
 import { Answer } from './../configuration';
 import { Configuration, Question } from '../configuration';
 import { Component, Input, OnInit, ChangeDetectorRef, ChangeDetectionStrategy, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'filippine',
@@ -16,6 +16,9 @@ export class FilippineComponent implements OnInit, AfterViewInit {
 
   @Output()
   public answer = new EventEmitter<Answer>();
+
+  @Output()
+  public completed = new EventEmitter<boolean>();
 
   public filippineForm = new FormGroup({});
   public columns: number = 1;
@@ -48,7 +51,7 @@ export class FilippineComponent implements OnInit, AfterViewInit {
           this.tiles[i].push({colspan: blankCellsLeft, question: false, highlight: false});
         }
 
-        const formQuestion = new FormGroup({}, this.rightAnswer(m));
+        const formQuestion = new FormGroup({}, [Validators.required, this.rightAnswer(m)]);
         for(let index = 0; index < inputCells; index++) {
           this.tiles[i].push({
             highlight: (index === m.answerPosition),                           // highlighted box or not
@@ -64,6 +67,8 @@ export class FilippineComponent implements OnInit, AfterViewInit {
         if(blankCellsRight > 0) {
           this.tiles[i].push({colspan: blankCellsRight, question: false, highlight: false});
         }
+
+        this.filippineForm.valueChanges.subscribe(() => this.completed.emit(this.filippineForm.valid));
       }
     );
   }
