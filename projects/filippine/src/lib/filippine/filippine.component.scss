@@ -1,7 +1,8 @@
 grid-tile {
     position: relative;
     display: flex;
-    outline: 1px solid black;
+    border: 1px solid black;
+    box-shadow: 0 0 0 1px black;
     
     input {
         width: 100%;
@@ -21,13 +22,15 @@ grid-tile {
 }
 .input {
     background-color: white;
-    outline: 1px solid black;
+    border: 1px solid black;
+    box-shadow: 0 0 0 1px black;
 }
 .highlight {
     background-color: yellow;
 }
 
 grid-list.ng-invalid .input {
-    outline-color: red;
+    border-color: red;
+    box-shadow: 0 0 0 1px red;
     z-index: 1;
 }
