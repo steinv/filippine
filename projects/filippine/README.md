@@ -1,6 +1,7 @@
 # [![GitHub license](https://img.shields.io/badge/license-mit-green.svg)](https://github.com/steinv/filippine/blob/main/projects/filippine/LICENSE) Filippine
 
 Filippine puzzle with Angular
+![Example](https://github.com/steinv/filippine/blob/main/projects/filippine/assets/example.png)
 
 ## Usage
 
