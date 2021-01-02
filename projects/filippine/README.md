@@ -1,4 +1,4 @@
-# [![GitHub license](https://img.shields.io/github/license/Smip/ngx-materialize.svg)](https://github.com/Smip/ngx-materialize/blob/master/LICENSE) Filippine
+# [![GitHub license](https://img.shields.io/github/license/Smip/ngx-materialize.svg)](https://github.com/steinv/filippine/blob/main/projects/filippine/LICENSE) Filippine
 
 Filippine puzzle with Angular
 
