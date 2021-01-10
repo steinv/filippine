@@ -1,43 +1,55 @@
 import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[AutoTab]'
+  selector: '[AutoTab]',
 })
 export class AutoTabDirective {
 
-  constructor() {}
+  constructor() { }
 
   @HostListener('keyup', ['$event']) onKeyUp(event: any) {
     const input = event.target;
-    if(!input.id || event.key === 'Tab' || event.key === 'Shift'){
+    if (!input.id || event.key === 'Tab' || event.key === 'Shift') {
       return;
     }
 
     const length = input.value.length;
+    const index = +input.name;
     const position = input.id.split(',');
-    let element;
+    let elementByCoordinates = position;
+    let elementByName = index;
 
     if ((length === 1 || event.key === 'ArrowRight') && input.id) {
-      element = position[0] + ',' + (+position[1] + 1);
+      elementByCoordinates = position[0] + ',' + (+position[1] + 1);
+      elementByName = index + 1;
     }
-    if((event.key === 'Backspace' || event.key === 'ArrowLeft') && input.id) {
-      element = position[0] + ',' + (+position[1] - 1);
+    if ((event.key === 'Backspace' || event.key === 'ArrowLeft') && input.id) {
+      elementByCoordinates = position[0] + ',' + (+position[1] - 1);
+      elementByName = index - 1;
     }
-    if((event.key === 'ArrowUp') && input.id) {
-      element = (+position[0] - 1) + ',' + position[1];
+    if ((event.key === 'ArrowUp') && input.id) {
+      elementByCoordinates = (+position[0] - 1) + ',' + position[1];
+      elementByName = index - 1;
     }
-    if((event.key === 'ArrowDown') && input.id) {
-      element = (+position[0] + 1) + ',' + position[1];
+    if ((event.key === 'ArrowDown') && input.id) {
+      elementByCoordinates = (+position[0] + 1) + ',' + position[1];
+      elementByName = index + 1;
     }
 
-    if(!element){
+    const field = document.getElementById(elementByCoordinates) as HTMLInputElement;
+    if (field) {
+      field.focus();
+      field.setSelectionRange(0, 1);
       return;
     }
 
-    const field = document.getElementById(element) as HTMLInputElement;
-    if (field) {
-      field.focus();
-      field.setSelectionRange(0,1);
-    }    
+    else {
+      const fields = document.getElementsByName(elementByName.toString());
+      if (fields && fields.item(0)) {
+        const inputField = fields.item(0) as HTMLInputElement;
+        inputField.focus();
+        inputField.setSelectionRange(0, 1);
+      }
+    }
   }
 }

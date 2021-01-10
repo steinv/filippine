@@ -1,7 +1,7 @@
 {
   "name": "@steinv/filippine",
-  "version": "0.0.11",
-  "description": "Filippine \(acrostic\) word puzzle with Angular",
+  "version": "0.0.12",
+  "description": "Filippine - acrostic word puzzle with Angular",
   "peerDependencies": {
     "@angular/common": "~11.0.1",
     "@angular/core": "~11.0.1"

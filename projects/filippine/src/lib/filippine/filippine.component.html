@@ -6,10 +6,19 @@
         gutterSize="0"
         [formGroupName]="i"
     >
-        <grid-tile *ngFor="let tile of row"
+        <grid-tile 
+            *ngFor="let tile of row"
             [colspan]="tile.colspan"
             [ngClass]="{'input': tile.question, 'spacer': !tile.question, '': true, 'highlight': tile.highlight}">
-            <input *ngIf="tile.question === true" AutoTab [id]="tile.index" type="text" maxlength="1" [formControlName]="tile.name" />
+            <input 
+                *ngIf="tile.question === true" 
+                AutoTab 
+                [id]="tile.coordinates" 
+                [name]="tile.index" 
+                type="text" 
+                maxlength="1" 
+                [formControlName]="tile.name" 
+            />
         </grid-tile>
     </grid-list>
 </form>
